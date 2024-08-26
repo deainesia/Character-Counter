@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 100%;
+      height: 100vh;
+    }
+    .main-area {
+      display: inherit;
+      flex-direction: inherit;
+      align-items: flex-start;
+
+      width: 80%;
+      height: 80%;
+    }
+    textarea {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: medium;
+
+      width: 100%;
+      height: 100%;
+    }
+    span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Character Counter</h1>
+    <div class="main-area">
+      <textarea id="text" placeholder="Input your text here!"></textarea>
+      <p>You have written <span id="totalText">0</span> characters include space.</p>
+    </div>
+  </div>
+  
+  <script>
+    var text = document.getElementById("text");
+    var counterPlace = document.getElementById("totalText");
+    text.addEventListener("input", (event) => {
+      counterPlace.textContent = text.value.length;
+    })
+  </script>
+</body>
+</html>
