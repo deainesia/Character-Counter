@@ -1,6 +1,11 @@
 body {
   padding: 0;
   margin: 0;
+
+  font-family: "Moderustic", sans-serif;
+}
+h1 {
+  font-size: 30px;
 }
 .container {
   display: flex;
@@ -38,7 +43,7 @@ body {
   border-radius: 0px 0px 20px 20px;
 }
 textarea {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Moderustic", sans-serif;
   font-size: medium;
 
   width: calc(100% - 10px);
