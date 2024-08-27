@@ -32,15 +32,15 @@
         <span id="option-type">
           <input type="radio" name="max-character" id="max-byinput" onclick="check('type')">
           <label for="max-byinput">Type:</label>
-          <input type="number" min="1" id="max-text" placeholder="250"/>
+          <input type="number" min="1" id="max-type" placeholder="250"/>
         </span>
       </div>
       <textarea id="text" placeholder="Type your text here!"></textarea>
       <div class="total-text-area">
         <p>You have written 
-          <span id="totalText">0</span>
-          <span id="maxText"></span>
-          characters include space.</p>
+          <span id="total-text">0</span>
+          <span id="max-text"></span>character,
+          <span id="remain-text"></span>include spaces.</p>
       </div>
     </div>
   </div>
@@ -48,34 +48,78 @@
   <script>
     var optionMax = "none";
     var text = document.getElementById("text");
-    var maxText = document.getElementById("max-text");
-    var counterPlace = document.getElementById("totalText");
-    var maxPlace = document.getElementById("maxText");
+    var maxText = document.getElementById("max-type");
+    var counterPlace = document.getElementById("total-text");
+    var maxPlace = document.getElementById("max-text");
+    var remainPlace = document.getElementById("remain-text");
 
     function check(option) {
       optionMax = option;
       
       if (optionMax == "none") {
         maxPlace.textContent = "";
+        remainPlace.textContent = "";
         text.setAttribute("maxlength","none");
       } else if (optionMax == "type") {
         optionMax = maxText.value;
-        maxPlace.textContent = "of " + optionMax;
-        text.setAttribute("maxlength",optionMax);
+        if (optionMax != "") {
+          maxPlace.textContent = "of " + optionMax + " ";
+          
+          if (optionMax - text.value.length >= 0) {
+            remainPlace.textContent = optionMax - text.value.length + " remaining character, ";
+            remainPlace.style.color = "green";
+          } else {
+            remainPlace.textContent = optionMax - text.value.length + " excess character, ";
+            remainPlace.style.color = "red";
+          }
+          
+          text.setAttribute("maxlength",optionMax);
+        } else {
+          maxPlace.textContent = "";
+          remainPlace.textContent = "";
+          text.setAttribute("maxlength","none");
+        }
         maxText.addEventListener("input", (event) => {
           optionMax = maxText.value;
-          maxPlace.textContent = "of " + optionMax;
+          maxPlace.textContent = "of " + optionMax + " ";
+          
+          if (optionMax - text.value.length >= 0) {
+            remainPlace.textContent = optionMax - text.value.length + " remaining character, ";
+            remainPlace.style.color = "green";
+          } else {
+            remainPlace.textContent = optionMax - text.value.length + " excess character, ";
+            remainPlace.style.color = "red";
+          }
+
           text.setAttribute("maxlength",optionMax);
         })
       } else {
-        maxPlace.textContent = "of " + optionMax;
+        maxPlace.textContent = "of " + optionMax + " ";
+
+        if (optionMax - text.value.length >= 0) {
+            remainPlace.textContent = optionMax - text.value.length + " remaining character, ";
+            remainPlace.style.color = "green";
+          } else {
+            remainPlace.textContent = optionMax - text.value.length + " excess character, ";
+            remainPlace.style.color = "red";
+          }
+
         text.setAttribute("maxlength",optionMax);
-      } 
+      }
     }
 
     text.addEventListener("input", (event) => {      
-      counterPlace.textContent = text.value.length;      
-    })
+      counterPlace.textContent = text.value.length + " ";
+      if (optionMax != "none") {
+        if (optionMax - text.value.length >= 0) {
+          remainPlace.textContent = optionMax - text.value.length + " remaining character, ";
+          remainPlace.style.color = "green";
+        } else {
+          remainPlace.textContent = optionMax - text.value.length + " excess character, ";
+          remainPlace.style.color = "red";
+        }
+      }
+    }) 
   </script>
 </body>
 </html>

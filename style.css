@@ -42,7 +42,7 @@ h1 {
 .total-text-area {
   border-radius: 0px 0px 20px 20px;
 }
-#max-text {
+#max-type {
   font-family: "Moderustic", sans-serif;
   
   width: 50px;
@@ -69,6 +69,6 @@ textarea {
   border-width: 0px 3px 0px 3px;
   outline: none;
 }
-#totalText, #maxText {
+#total-text, #max-text, #remain-text {
   font-weight: bold;
 }
