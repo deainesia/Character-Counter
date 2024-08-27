@@ -52,6 +52,9 @@ h1 {
   border: none;
   border-radius: 10px;
 }
+input[type='radio'] {
+  accent-color: #c18412;
+}
 textarea {
   font-family: "Moderustic", sans-serif;
   font-size: medium;

@@ -32,7 +32,7 @@
         <span id="option-type">
           <input type="radio" name="max-character" id="max-byinput" onclick="check('type')">
           <label for="max-byinput">Type:</label>
-          <input type="text" id="max-text" placeholder="250"/>
+          <input type="number" min="1" id="max-text" placeholder="250"/>
         </span>
       </div>
       <textarea id="text" placeholder="Type your text here!"></textarea>
@@ -46,23 +46,31 @@
   </div>
   
   <script>
-    var optionNone = document.getElementById("max-none");
-    var option100 = document.getElementById("max-100");
-    var option500 = document.getElementById("max-500");
-    var option1000 = document.getElementById("max-1000");
-    var optionType = document.getElementById("max-byinput");
     var optionMax = "none";
     var text = document.getElementById("text");
+    var maxText = document.getElementById("max-text");
     var counterPlace = document.getElementById("totalText");
     var maxPlace = document.getElementById("maxText");
 
     function check(option) {
       optionMax = option;
-      if (optionMax != "none") {
-        maxPlace.textContent = "of " + optionMax;
-      } else {
+      
+      if (optionMax == "none") {
         maxPlace.textContent = "";
-      }
+        text.setAttribute("maxlength","none");
+      } else if (optionMax == "type") {
+        optionMax = maxText.value;
+        maxPlace.textContent = "of " + optionMax;
+        text.setAttribute("maxlength",optionMax);
+        maxText.addEventListener("input", (event) => {
+          optionMax = maxText.value;
+          maxPlace.textContent = "of " + optionMax;
+          text.setAttribute("maxlength",optionMax);
+        })
+      } else {
+        maxPlace.textContent = "of " + optionMax;
+        text.setAttribute("maxlength",optionMax);
+      } 
     }
 
     text.addEventListener("input", (event) => {      
