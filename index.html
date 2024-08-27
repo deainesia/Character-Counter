@@ -14,39 +14,59 @@
       <div class="max-character-area">
         <p>Set maximum character?</p>
         <span id="option-none">
-          <input type="radio" name="max-character" id="max-none" checked="checked">
+          <input type="radio" name="max-character" id="max-none" checked="checked" onclick="check('none')">
           <label for="max-none">None</label>
         </span>
         <span id="option-100">
-          <input type="radio" name="max-character" id="max-100">
+          <input type="radio" name="max-character" id="max-100" onclick="check(100)">
           <label for="max-100">100</label>
         </span>
         <span id="option-500">
-          <input type="radio" name="max-character" id="max-500">
+          <input type="radio" name="max-character" id="max-500" onclick="check(500)">
           <label for="max-500">500</label>
         </span>
         <span id="option-1000">
-          <input type="radio" name="max-character" id="max-1000">
+          <input type="radio" name="max-character" id="max-1000" onclick="check(1000)">
           <label for="max-1000">1000</label>
         </span>
         <span id="option-type">
-          <input type="radio" name="max-character" id="max-byinput">
+          <input type="radio" name="max-character" id="max-byinput" onclick="check('type')">
           <label for="max-byinput">Type:</label>
           <input type="text" id="max-text" placeholder="250"/>
         </span>
       </div>
       <textarea id="text" placeholder="Type your text here!"></textarea>
       <div class="total-text-area">
-        <p>You have written <span id="totalText">0</span> characters include space.</p>
+        <p>You have written 
+          <span id="totalText">0</span>
+          <span id="maxText"></span>
+          characters include space.</p>
       </div>
     </div>
   </div>
   
   <script>
+    var optionNone = document.getElementById("max-none");
+    var option100 = document.getElementById("max-100");
+    var option500 = document.getElementById("max-500");
+    var option1000 = document.getElementById("max-1000");
+    var optionType = document.getElementById("max-byinput");
+    var optionMax = "none";
     var text = document.getElementById("text");
     var counterPlace = document.getElementById("totalText");
-    text.addEventListener("input", (event) => {
-      counterPlace.textContent = text.value.length;
+    var maxPlace = document.getElementById("maxText");
+
+    function check(option) {
+      optionMax = option;
+      if (optionMax != "none") {
+        maxPlace.textContent = "of " + optionMax;
+      } else {
+        maxPlace.textContent = "";
+      }
+    }
+
+    text.addEventListener("input", (event) => {      
+      counterPlace.textContent = text.value.length;      
     })
   </script>
 </body>

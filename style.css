@@ -66,6 +66,6 @@ textarea {
   border-width: 0px 3px 0px 3px;
   outline: none;
 }
-#totalText {
+#totalText, #maxText {
   font-weight: bold;
 }
