@@ -24,19 +24,32 @@ body {
   align-items: center;
   gap: 15px;
   
-  width: 100%;
+  width: calc(100% - 15px);
+  padding-left: 15px;
 
-  background-color: grey;
+  border: solid #dddddd;
+  background-color: #dddddd;
+  border-width: 0px 3px 0px 3px;
+}
+.max-character-area {
+  border-radius: 20px 20px 0px 0px;
+}
+.total-text-area {
+  border-radius: 0px 0px 20px 20px;
 }
 textarea {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
 
-  width: calc(100% - 11px);
+  width: calc(100% - 10px);
   height: 100%;
   padding: 5px;
 
   resize: none;
+  border: solid #dddddd;
+  background-color: #f1f1f1;
+  border-width: 0px 3px 0px 3px;
+  outline: none;
 }
 #totalText {
   font-weight: bold;
