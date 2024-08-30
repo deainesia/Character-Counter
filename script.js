@@ -2,10 +2,10 @@ var optionMax = "none"; //default value of maximum character option
 var text = document.getElementById("text"); //textarea handle
 var inputMax = document.getElementById("max-byinput"); //radio button for maximum character by input handle
 var maxText = document.getElementById("max-type"); //maximum character by input handle
-var counterPlace = document.getElementById("total-text"); //total written character text handle
+var counterCharacter = document.getElementById("total-text"); //total written character text handle
+var counterWord = document.getElementById("total-word"); //total word text handle
 var maxPlace = document.getElementById("max-text"); //maximum character text handle
 var remainPlace = document.getElementById("remain-text"); //remaining character text handle
-var textArray; //return character into array for word counter
 
 
 function checkRemainCharacter(maxValue) { //function for check the remain character by maximum character
@@ -52,12 +52,13 @@ function check(option) { //function for handling maximum character option
 }
 
 text.addEventListener("input", (event) => { //add listener textarea handle
-  counterPlace.textContent = text.value.length + " "; //character counter
+  //character counter
+  counterCharacter.textContent = text.value.length; 
   if (optionMax != "none") {
     checkRemainCharacter(optionMax);
   }
-
-  textArray = text.value.split(" ").filter(function(str) { //split and filter text by whitespace
+  //word counter
+  counterWord.textContent = text.value.split(" ").filter((str) => { //split and filter text by whitespace
     return /\S/.test(str); // return no whitespace in array
   }).length; //length of array
 }) 

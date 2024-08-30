@@ -21,13 +21,12 @@ h1 {
   align-items: flex-start;
 
   width: 80%;
-  height: 80%;
+  height: 85%;
 }
 .max-character-area, .total-text-area {
   display: inherit;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
   
   width: calc(100% - 15px);
   padding-left: 15px;
@@ -37,10 +36,28 @@ h1 {
   border-width: 0px 3px 0px 3px;
 }
 .max-character-area {
+  gap: 15px;
   border-radius: 20px 20px 0px 0px;
 }
 .total-text-area {
+  height: 50px;
+
   border-radius: 0px 0px 20px 20px;
+  justify-content: space-around;  
+}
+.bottom-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+.divider-left {
+  border-left: 2px solid #a6acbd;
+}
+.divider-center {
+  border-left: 2px solid #a6acbd;
+  border-right: 2px solid #a6acbd;
 }
 #max-type {
   font-family: "Moderustic", sans-serif;
