@@ -5,6 +5,7 @@ var maxText = document.getElementById("max-type"); //maximum character by input 
 var counterPlace = document.getElementById("total-text"); //total written character text handle
 var maxPlace = document.getElementById("max-text"); //maximum character text handle
 var remainPlace = document.getElementById("remain-text"); //remaining character text handle
+var textArray; //return character into array for word counter
 
 
 function checkRemainCharacter(maxValue) { //function for check the remain character by maximum character
@@ -55,4 +56,8 @@ text.addEventListener("input", (event) => { //add listener textarea handle
   if (optionMax != "none") {
     checkRemainCharacter(optionMax);
   }
+
+  textArray = text.value.split(" ").filter(function(str) { //split and filter text by whitespace
+    return /\S/.test(str); // return no whitespace in array
+  }).length; //length of array
 }) 
