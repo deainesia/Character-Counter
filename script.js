@@ -6,6 +6,7 @@ var counterCharacter = document.getElementById("total-text"); //total written ch
 var counterWord = document.getElementById("total-word"); //total word text handle
 var maxCharacter = document.getElementById("max-text"); //maximum character text handle
 var remainCharacter = document.getElementById("remain-text"); //remaining character text handle
+var textArray;
 
 
 function checkRemainCharacter(maxValue) { //function for check the remain character by maximum character
@@ -24,6 +25,7 @@ function check(option) { //function for handling maximum character option
   if (optionMax == "none") { //if maximum character option not set
     maxCharacter.textContent = "-"; //text handle for maximum character blank
     remainCharacter.textContent = "-"; //text handle for remaining character blank
+    remainCharacter.style.color = "black";
     text.setAttribute("maxlength","none"); //set maxlength of textarea by maximum character
   } else if (optionMax == "type" && inputMax.checked == true) { //if maximum character option set by user input
     optionMax = maxText.value; //get user input
@@ -35,6 +37,7 @@ function check(option) { //function for handling maximum character option
     } else {
       maxCharacter.textContent = "-";
       remainCharacter.textContent = "-";
+      remainCharacter.style.color = "black";
       text.setAttribute("maxlength","none");
     }
     
@@ -58,7 +61,9 @@ text.addEventListener("input", (event) => { //add listener textarea handle
     checkRemainCharacter(optionMax);
   }
   //word counter
-  counterWord.textContent = text.value.split(" ").filter((str) => { //split and filter text by whitespace
+  textArray = text.value.split(" ").filter((str) => { //split and filter text by whitespace
     return /\S/.test(str); // return no whitespace in array
   }).length; //length of array
+
+  counterWord.textContent = textArray;
 }) 
