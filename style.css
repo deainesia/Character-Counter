@@ -115,10 +115,10 @@ footer {
       a {
         text-decoration: none;
         color: inherit;
-      }
-      i {
-        font-size: 25px;
-        padding: 2px;
+        i {
+          font-size: 25px;
+          padding: 2px;
+        }
       }
     }
   }
