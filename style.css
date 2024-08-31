@@ -70,7 +70,7 @@ h1 {
   border-radius: 10px;
 }
 input[type='radio'] {
-  accent-color: #c18412;
+  accent-color: #2d3945;
 }
 textarea {
   font-family: "Moderustic", sans-serif;
@@ -86,6 +86,40 @@ textarea {
   border-width: 0px 3px 0px 3px;
   outline: none;
 }
-#total-text, #max-text, #remain-text {
+#total-text, #max-text, #remain-text, #total-word {
   font-weight: bold;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #2d3945;
+  color: #dddddd;
+
+  width: 100%;
+  padding: 15px 0px 15px 0px;
+  margin-top: 20px;
+  .footer-container {
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 80%;
+    .right-footer {
+      display: inherit;
+      flex-direction: column;
+      align-items: end;
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      i {
+        font-size: 25px;
+        padding: 2px;
+      }
+    }
+  }
 }

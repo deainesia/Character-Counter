@@ -4,17 +4,17 @@ var inputMax = document.getElementById("max-byinput"); //radio button for maximu
 var maxText = document.getElementById("max-type"); //maximum character by input handle
 var counterCharacter = document.getElementById("total-text"); //total written character text handle
 var counterWord = document.getElementById("total-word"); //total word text handle
-var maxPlace = document.getElementById("max-text"); //maximum character text handle
-var remainPlace = document.getElementById("remain-text"); //remaining character text handle
+var maxCharacter = document.getElementById("max-text"); //maximum character text handle
+var remainCharacter = document.getElementById("remain-text"); //remaining character text handle
 
 
 function checkRemainCharacter(maxValue) { //function for check the remain character by maximum character
   if (maxValue - text.value.length >= 0) { //if character have not reached the maximum
-    remainPlace.textContent = maxValue - text.value.length + " remaining character, ";
-    remainPlace.style.color = "green";
+    remainCharacter.textContent = maxValue - text.value.length;
+    remainCharacter.style.color = "green";
   } else {
-    remainPlace.textContent = maxValue - text.value.length + " excess character, ";
-    remainPlace.style.color = "red";
+    remainCharacter.textContent = maxValue - text.value.length;
+    remainCharacter.style.color = "red";
   }
 }
 
@@ -22,30 +22,30 @@ function check(option) { //function for handling maximum character option
   optionMax = option; //change initial value by the given parameter
   
   if (optionMax == "none") { //if maximum character option not set
-    maxPlace.textContent = ""; //text handle for maximum character blank
-    remainPlace.textContent = ""; //text handle for remaining character blank
+    maxCharacter.textContent = "-"; //text handle for maximum character blank
+    remainCharacter.textContent = "-"; //text handle for remaining character blank
     text.setAttribute("maxlength","none"); //set maxlength of textarea by maximum character
   } else if (optionMax == "type" && inputMax.checked == true) { //if maximum character option set by user input
     optionMax = maxText.value; //get user input
     
     if (optionMax != "") { //if initial value of user input not blank
-      maxPlace.textContent = "of " + optionMax + " "; 
+      maxCharacter.textContent = optionMax; 
       checkRemainCharacter(optionMax);
       text.setAttribute("maxlength",optionMax);
     } else {
-      maxPlace.textContent = "";
-      remainPlace.textContent = "";
+      maxCharacter.textContent = "-";
+      remainCharacter.textContent = "-";
       text.setAttribute("maxlength","none");
     }
     
     maxText.addEventListener("input", (event) => { //add listener input handle for maximum character
       optionMax = maxText.value; // get user input
-      maxPlace.textContent = "of " + optionMax + " ";
+      maxCharacter.textContent = optionMax;
       checkRemainCharacter(optionMax);
       text.setAttribute("maxlength",optionMax);
     })
   } else {
-    maxPlace.textContent = "of " + optionMax + " ";
+    maxCharacter.textContent = optionMax;
     checkRemainCharacter(optionMax);
     text.setAttribute("maxlength",optionMax);
   }
